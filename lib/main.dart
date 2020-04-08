@@ -52,7 +52,7 @@ class _HomeState extends State<Home> {
       } else if (imc >= 29.9 && imc < 34.9) {
         _info = "Obesidade grau I ${imc.toStringAsPrecision(4)}";
         _corinfo = Color.fromRGBO(250, 0, 100, 0.5);
-      } else if (imc >= 34.9 && imc < 39.9) {
+      } else if (imc >= 34.9 && imc < 40) {
         _info = "Obesidade grau II ${imc.toStringAsPrecision(4)}";
         _corinfo = Color.fromRGBO(250, 0, 100, 0.5);
       } else if (imc >= 40) {
@@ -107,9 +107,12 @@ class _HomeState extends State<Home> {
                   letterSpacing: 4,
                 ),
                 validator: (texto) {
-                  if (texto.isEmpty) {
-                    return "Insira seu peso";
-                  }
+                  if (texto.isEmpty) return "Insira seu peso";
+                  double peso = double.tryParse(texto);
+                  if (peso == null) return "Número inválido";
+                  if (peso < 1) return "Peso inválido";
+
+                  return null;
                 },
                 controller: pesoControle,
               ),
@@ -131,9 +134,12 @@ class _HomeState extends State<Home> {
                   letterSpacing: 4,
                 ),
                 validator: (texto) {
-                  if (texto.isEmpty) {
-                    return "Insira uma altura";
-                  }
+                  if (texto.isEmpty) return "Insira uma altura";
+                  double altura = double.tryParse(texto);
+                  if (altura == null) return "Número inválido";
+                  if (altura < 0.1) return "Altura inválida";
+
+                  return null;
                 },
                 controller: alturaControle,
               ),
@@ -144,6 +150,7 @@ class _HomeState extends State<Home> {
                   child: RaisedButton(
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
+                        _formKey.currentState.save();
                         _calcular();
                       }
                     },
