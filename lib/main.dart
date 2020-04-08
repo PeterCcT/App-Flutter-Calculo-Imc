@@ -30,64 +30,78 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Icon(
-            Icons.person_outline,
-            size: 120,
-            color: Colors.indigo,
-          ),
-          TextField(
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              labelText: "Peso (kg)",
-              labelStyle: TextStyle(
-                color: Colors.indigo,
-                fontSize: 20,
+      body: SingleChildScrollView(
+        padding: EdgeInsets.fromLTRB(15, 0, 10, 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Icon(
+              Icons.person_outline,
+              size: 120,
+              color: Colors.indigo,
+            ),
+            TextField(
+              keyboardType: TextInputType.number, 
+              decoration: InputDecoration(
+                labelText: "Peso (kg)",
+                labelStyle: TextStyle(
+                  color: Colors.indigo,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 0,
+                ),
+              ),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
-                letterSpacing: 0,
+                letterSpacing: 4,
               ),
             ),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 4,
-            ),
-          ),
-          TextField(
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              labelText: "Altura (m)",
-              labelStyle: TextStyle(
-                color: Colors.indigo,
-                fontSize: 20,
+            TextField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: "Altura (m)",
+                labelStyle: TextStyle(
+                  color: Colors.indigo,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 0,
+                ),
+              ),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
-                letterSpacing: 0,
+                letterSpacing: 4,
               ),
             ),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 4,
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Container(
+                height: 30,
+                child: RaisedButton(
+                  onPressed: () {}, 
+                  child: Text(
+                    "Calcular",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  color: Colors.indigo,
+                  textColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
             ),
-          ),
-         Container(
-          margin: EdgeInsets.symmetric(vertical: 10),
-           height: 40,
-           child:  RaisedButton(
-            onPressed: () {},
-            child: Text("Calcular",style: TextStyle(fontSize: 20),),
-            color: Colors.indigo,
-            textColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+            Text(
+              "Info",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 20, color: Color.fromRGBO(250, 0, 0, 0.4)),
             ),
-          ),
-         ),
-        ],
+          ],
+        ),
       ),
     );
   }
